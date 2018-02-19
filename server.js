@@ -1,6 +1,8 @@
 const express = require("express");
 const hbs = require("hbs");
-
+// process.env is an object that stores all of our environment key value pairs
+// the port is set by heroku
+const port = process.env.PORT || 3000;
 let app = express();
 
 app.use( (req, res, next) => {
@@ -47,4 +49,6 @@ app.get("/bad", (req, res) => {
 
 
 
-app.listen(3000);
+app.listen(port, () => {
+    console.log(`Server is now running on ${port}`);
+});
